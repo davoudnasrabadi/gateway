@@ -1,0 +1,52 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package users;
+
+import "commons.proto";
+
+
+message IdNum {
+  string id = 1;
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  string password = 4;
+}
+message UserCreate {
+  string username=1;
+  string email=2;
+  string password=3;
+}
+
+message UsersList {
+  string data = 1;
+}
+
+message deleteMessage {
+  string msg=1;
+}
+
+message updateMessageResult {
+  string msg=1;
+}
+
+message updateMessage{
+  string id=1;
+  string username=2;
+  string email = 3;
+  string password = 4;
+}
+message Fl {
+  string all=1;
+}
+service UsersService {
+  rpc FindOne (IdNum) returns (User);
+  rpc FindAll(Fl) returns (UsersList);
+  rpc CreateOne(UserCreate) returns (User);
+  rpc DeleteOne(IdNum) returns (deleteMessage);
+  rpc UpdateOne(updateMessage) returns (updateMessageResult);
+}
+
