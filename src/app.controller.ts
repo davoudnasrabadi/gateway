@@ -23,9 +23,9 @@ export class AppController {
   }
   @Post('/login')
   login(@Body(new ValidationPipe()) body:CreateUserDto){
-    return this.appService.register(body);
+    return this.appService.login(body);
   }
-  @Delete(':i d')
+  @Delete(':id')
   deleteById(@Param('id') id:string){
         return this.appService.deleteById(id);
   }
