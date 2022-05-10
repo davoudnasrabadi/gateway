@@ -12,13 +12,11 @@ message IdNum {
 message User {
   string id = 1;
   string username = 2;
-  string email = 3;
-  string password = 4;
+  string password = 3;
 }
 message UserCreate {
   string username=1;
-  string email=2;
-  string password=3;
+  string password=2;
 }
 
 message UsersList {
@@ -36,8 +34,7 @@ message updateMessageResult {
 message updateMessage{
   string id=1;
   string username=2;
-  string email = 3;
-  string password = 4;
+  string password = 3;
 }
 message Fl {
   string all=1;
@@ -45,8 +42,13 @@ message Fl {
 service UsersService {
   rpc FindOne (IdNum) returns (User);
   rpc FindAll(Fl) returns (UsersList);
-  rpc CreateOne(UserCreate) returns (User);
   rpc DeleteOne(IdNum) returns (deleteMessage);
   rpc UpdateOne(updateMessage) returns (updateMessageResult);
 }
+
+service AuthService {
+  rpc register(UserCreate) returns(Fl);
+  rpc login(UserCreate) returns(Fl)
+}
+
 
