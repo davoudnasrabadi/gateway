@@ -8,11 +8,11 @@ export class AppService implements OnModuleInit {
   private authService: AuthService;
   constructor(
     @Inject('USER_SERVICE') private userServiceClient: ClientGrpc,
-    @Inject('AuthService') private authServiceClinet:ClientGrpc
+    @Inject('AuthService') private authServiceClient:ClientGrpc
   ) {}
   onModuleInit() {
     this.userService = this.userServiceClient.getService<UsersService>('UsersService');
-    this.authService = this.authServiceClinet.getService<AuthService>('AuthService');
+    this.authService = this.authServiceClient.getService<AuthService>('AuthService');
   }
   async getById(id:string) {
     if(id!= 'all'){
