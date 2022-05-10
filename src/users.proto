@@ -12,7 +12,8 @@ message IdNum {
 message User {
   string id = 1;
   string username = 2;
-  string password = 3;
+  string createdAt=3;
+  string updatedAt=4;
 }
 message UserCreate {
   string username=1;
@@ -47,6 +48,7 @@ service UsersService {
   rpc register(UserCreate) returns(Fl);
   rpc login(UserCreate) returns(Fl);
 }
+
 
 
 

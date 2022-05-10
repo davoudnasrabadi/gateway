@@ -39,7 +39,6 @@ export class AppService implements OnModuleInit {
        const user = {
          id:id,
          username:body.username,
-         email:body.email,
          password:body.password
        }
       return this.userService.UpdateOne(user);
