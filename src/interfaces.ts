@@ -23,14 +23,6 @@ export interface UserCreateDto {
 export interface UpdateMsg {
   msg: string;
 }
-export interface UsersService {
-  findOne(id: getById): User;
-  findAll(id: getById): string;
-  createOne(body: UserCreateDto): User[];
-  DeleteOne(id: getById): DeleteMsg;
-  UpdateOne(body: User): UpdateMsg
-}
-
 export interface UserRegister {
   username:string;
   password:string;
@@ -39,7 +31,14 @@ export interface UserLogin {
   username:string;
   password:string;
 }
-export interface AuthService {
+export interface UsersService {
+  findOne(id: getById): User;
+  findAll(id: getById): string;
+  createOne(body: UserCreateDto): User[];
+  DeleteOne(id: getById): DeleteMsg;
+  UpdateOne(body: User): UpdateMsg;
   register(user:UserRegister):string;
   login(User:UserLogin):string;
 }
+
+
