@@ -48,7 +48,7 @@ service UsersService {
 
 service AuthService {
   rpc register(UserCreate) returns(Fl);
-  rpc login(UserCreate) returns(Fl)
+  rpc login(UserCreate) returns(Fl);
 }
 
 
