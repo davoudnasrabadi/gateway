@@ -44,11 +44,9 @@ service UsersService {
   rpc FindAll(Fl) returns (UsersList);
   rpc DeleteOne(IdNum) returns (deleteMessage);
   rpc UpdateOne(updateMessage) returns (updateMessageResult);
-}
-
-service AuthService {
   rpc register(UserCreate) returns(Fl);
   rpc login(UserCreate) returns(Fl);
 }
+
 
 
