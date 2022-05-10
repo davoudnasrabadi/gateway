@@ -30,3 +30,16 @@ export interface UsersService {
   DeleteOne(id: getById): DeleteMsg;
   UpdateOne(body: User): UpdateMsg
 }
+
+export interface UserRegister {
+  username:string;
+  password:string;
+}
+export interface UserLogin {
+  username:string;
+  password:string;
+}
+export interface AuthService {
+  register(user:UserRegister):string;
+  login(User:UserLogin):string;
+}
