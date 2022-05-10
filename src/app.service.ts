@@ -1,14 +1,18 @@
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
 import {UsersService} from './interfaces'; 
+import {AuthService} from './interfaces';
 @Injectable()
 export class AppService implements OnModuleInit {
   private userService: UsersService;
+  private authService: AuthService;
   constructor(
-    @Inject('USER_SERVICE') private userServiceClient: ClientGrpc
+    @Inject('USER_SERVICE') private userServiceClient: ClientGrpc,
+    @Inject('AuthService') private authServiceClinet:ClientGrpc
   ) {}
   onModuleInit() {
     this.userService = this.userServiceClient.getService<UsersService>('UsersService');
+    this.authService = this.authServiceClinet.getService<AuthService>('AuthService');
   }
   async getById(id:string) {
     if(id!= 'all'){
@@ -29,10 +33,12 @@ export class AppService implements OnModuleInit {
   getAll(data:any) {
     return this.userService.findAll(data);
   }
-  createOne(body:any){
-    return this.userService.createOne(body);
+  register(body:any){
+    return this.authService.register(body);
   }
-
+  login(body:any){
+    return this.authService.login(body);
+  }
   updateOne(id:string,body:any){
        const user = {
          id:id,

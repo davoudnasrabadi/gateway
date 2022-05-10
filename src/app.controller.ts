@@ -6,7 +6,7 @@ import { identifier } from '@babel/types';
 @Controller('users')
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
+  
   @Get(':id')
   getById(@Param('id') id:string) {
     return this.appService.getById(id);
@@ -17,12 +17,15 @@ export class AppController {
     return await this.appService.getAll("all");
   }
 
-  @Post()
+  @Post('/register')
   createOne(@Body(new ValidationPipe()) body:CreateUserDto){
-    return this.appService.createOne(body);
+    return this.appService.register(body);
   }
-
-  @Delete(':id')
+  @Post('/login')
+  login(@Body(new ValidationPipe()) body:CreateUserDto){
+    return this.appService.register(body);
+  }
+  @Delete(':i d')
   deleteById(@Param('id') id:string){
         return this.appService.deleteById(id);
   }
