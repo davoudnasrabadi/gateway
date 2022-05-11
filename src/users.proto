@@ -21,7 +21,7 @@ message UserCreate {
 }
 
 message UsersList {
-  string data = 1;
+  User items = 1;
 }
 
 message deleteMessage {
@@ -40,15 +40,17 @@ message updateMessage{
 message Fl {
   string all=1;
 }
+message token {
+  string token=1;
+}
+message all {
+  string all =1;
+}
 service UsersService {
   rpc FindOne (IdNum) returns (User);
-  rpc FindAll(Fl) returns (UsersList);
+  rpc FindAll(Fl) returns (Fl);
   rpc DeleteOne(IdNum) returns (deleteMessage);
   rpc UpdateOne(updateMessage) returns (updateMessageResult);
-  rpc register(UserCreate) returns(Fl);
-  rpc login(UserCreate) returns(Fl);
+  rpc register(UserCreate) returns(token);
+  rpc login(UserCreate) returns(token);
 }
-
-
-
-

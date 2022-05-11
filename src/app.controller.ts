@@ -12,9 +12,9 @@ export class AppController {
     return this.appService.getById(id);
   }
 
-  @Get('/all')
+  @Get('')
   async getAll(@Param('id') id:string){
-    return await this.appService.getAll("all");
+    return await this.appService.getAll();
   }
 
   @Post('/register')

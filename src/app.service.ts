@@ -11,23 +11,19 @@ export class AppService implements OnModuleInit {
     this.userService = this.userServiceClient.getService<UsersService>('UsersService');
   }
   async getById(id:string) {
-    if(id!= 'all'){
     const data = {id:id}
     return this.userService.findOne(data);
-    }
-    else {
-      const data= {id:'all'}
-      return this.userService.findAll(data);
-    
-    }
     
   }
   deleteById(id:string) {
     const data = {id:id}
     return this.userService.DeleteOne(data);
   }
-  getAll(data:any) {
-    return this.userService.findAll(data);
+  getAll() {
+    const all= {
+      all:"all"
+    }
+    return this.userService.findAll(all);
   }
   register(body:any){
     return this.userService.register(body);
