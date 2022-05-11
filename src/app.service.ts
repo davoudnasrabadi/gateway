@@ -26,7 +26,7 @@ export class AppService implements OnModuleInit {
      const observable = await this.getById(id) as Observable<any>;
      const promise = observable.toPromise();
      const data:UserByIdDto = await promise;
-     if(data.id !== undefined){
+     if(data?.id !== undefined){
        return true;
      }
      return false;
@@ -59,7 +59,6 @@ export class AppService implements OnModuleInit {
    async  validateRequest(@Req() req):Promise<boolean>{
     const token=req.headers['authorization'].split(' ')[1];
     const decoded:Token = jwt_decode(token);
-    console.log(decoded);
     const now = Date.now().valueOf() / 1000;
     if(!decoded.exp || !decoded.iat || !decoded.id || !decoded.username){
       return false;
@@ -69,7 +68,6 @@ export class AppService implements OnModuleInit {
     }
     const id = decoded.id.toString();
     const isUser = await this.getByIdForJwt(id);
-    console.log(isUser);
     return isUser;
     
   }
