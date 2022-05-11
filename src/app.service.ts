@@ -4,9 +4,7 @@ import {UsersService} from './interfaces';
 import {AllMsg,errorMsg,UserByIdDto, DeleteMsg,UpdateMsg} from './Dtos/response.dto';
 import jwt_decode from 'jwt-decode';
 import {Token} from './Dtos/token.interface'
-import { type } from 'os';
 import { Observable } from 'rxjs';
-import axios from 'axios';
 
 @Injectable()
 export class AppService implements OnModuleInit {
