@@ -26,7 +26,7 @@ export class AppService implements OnModuleInit {
      const observable = await this.getById(id) as Observable<any>;
      const promise = observable.toPromise();
      const data:UserByIdDto = await promise;
-     if(data?.id !== undefined){
+     if(data.id !== undefined){
        return true;
      }
      return false;
