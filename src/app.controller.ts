@@ -2,9 +2,7 @@ import { Controller, Get, Param, Post,Body, Delete, Put, Logger,Req,Inject,Unaut
 import { AppService } from './app.service';
 import {ValidationPipe} from './myPipe';
 import {CreateUserDto} from './Dtos/createDto';
-import { identifier } from '@babel/types';
 import {AllMsg,UserByIdDto,errorMsg, DeleteMsg,UpdateMsg} from './Dtos/response.dto';
-import { tokenDto } from './Dtos/response.dto';
 @Controller('users')
 export class AppController {
 
