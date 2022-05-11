@@ -13,8 +13,9 @@ import { AppService } from './app.service';
         protoPath: join(__dirname, '../src/users.proto'),
       },
     }
-  ]),],
+  ])],
   controllers: [AppController],
   providers: [AppService],
+  exports:[AppService]
 })
 export class AppModule {}
